@@ -1,0 +1,101 @@
+{% extends "base.html" %} {% block title %}Minimized home{% endblock %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <style>
+     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        }
+    body{
+
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url(https://64.media.tumblr.com/3213da0da862a03feb6f213a9d49bcf9/304221bd7ca05e9c-05/s1280x1920/e0b9b5d2c7128506403e935e0d15c367d64fc60d.gif) no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+        }
+ .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.button {
+  position: absolute;
+  top: 45%;
+  right: 45%;
+  backdrop-filter: blur(9px);
+  border: 2px solid rgba(255, 255, 255, .2);
+  font-size: 28px;
+  background: transparent;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  transition: 0s;
+  opacity: 1;
+}
+img{
+         width: 70px;
+         height: 70px;
+         opacity: 100;
+      }
+    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://www.collaboratescience.com/protoplasm/library/main.js"></script>
+</head>
+<body>
+<audio id="myAudio" >
+    <source src="{{ url_for('static', filename='music/lacy.mp3') }}" >
+</audio>
+<button class="button" class="center" onclick="playAudio()" type="button">
+    <img src="https://media.tenor.com/x1QOy0SBJW8AAAAi/toby-fox.gif" />
+</button>
+<script>
+var x = document.getElementById("myAudio");
+
+function playAudio() {
+  x.play();
+}
+
+function pauseAudio() {
+  x.pause();
+}
+</script>
+</body>
+</html>
+    {% endblock %}
