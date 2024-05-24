@@ -26,9 +26,9 @@
   width: 50%;
 }
 .button {
-  position: absolute;
-  top: 45%;
-  right: 45%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   backdrop-filter: blur(9px);
   border: 2px solid rgba(255, 255, 255, .2);
   font-size: 28px;
@@ -82,6 +82,14 @@ img{
 <audio id="myAudio" >
     <source src="{{ url_for('static', filename='music/audio1.mp3') }}" >
 </audio>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <button class="button" class="center" onclick="playAudio()" type="button">
     <img src="https://media.tenor.com/x1QOy0SBJW8AAAAi/toby-fox.gif" />
 </button>
