@@ -9,10 +9,10 @@ auth = Blueprint('auth', __name__)
 def home():
 
     return render_template("home.html", user=current_user)
-@auth.route('/audio',)
-def audio():
+@auth.route('/slider',)
+def slider():
 
-    return render_template("audio.html", user=current_user)
+    return render_template("slider.html", user=current_user)
 
 @auth.route('/joke',)
 def joke():
