@@ -15,13 +15,11 @@
         align-items: center;
         min-height: 100vh;
         background: url(https://sdbc.ac.in/wp-content/uploads/2022/04/12.jpg) no-repeat;
-       background-position: center;
-        background-size: 100% 100%;
+        background-size: cover;
+        background-position: center;
         }
     .wrapper{
-        display: block;
-  margin-left: auto;
-  margin-right: auto;
+        margin: 0 auto;
         width: 420px;
         background: transparent;
         border: 2px solid rgba(255, 255, 255, .2);
@@ -90,6 +88,7 @@
     .register-link p a:hover{
     text-decoration: underline;
     }
+    div { align-content: center; }
     </style>
 
   <meta charset="UTF-8">
@@ -101,10 +100,7 @@
 <body>
 <br>
 <br>
-<br>
-<br>
-<br>
-  <div class="wrapper">
+  <div class="wrapper ">
       <form method="POST">
       <h1>Login</h1>
       <div class="form-group">
@@ -126,6 +122,7 @@
       <div class="register-link">
         <p>Dont have an account? <a href="/sign-up">Register</a></p>
       </div>
+
     </form>
   </div>
 </body>
