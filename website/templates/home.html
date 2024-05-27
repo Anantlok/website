@@ -10,6 +10,17 @@
             background-size: 100% 100%;
             background-attachment: fixed;
         }
+        .wrapper{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 900px;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, .2);
+        backdrop-filter: blur(9px);
+        border-radius: 12px;
+        padding: 30px 40px;
+        }
 h0 {        font-family: Verdana;
             font-size: 40px;
             display: flex;
@@ -40,6 +51,7 @@ h0 {        font-family: Verdana;
 <br/>
 <br/>
 <br/>
+<div class="wrapper">
 <h1 style="color: white" align="center"> <b>
 This is your home page </b>
 </h1>
@@ -47,8 +59,7 @@ This is your home page </b>
 <h2 align="center" style="color: white">Notes</h2>
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
+  <li class="list-group-item">{{ note.data }}
     <button type="button" class="close" onClick=" deleteNote({{ note.id }}) ">
       <span aria-hidden="true"> &times;</span>
     </button>
@@ -56,11 +67,12 @@ This is your home page </b>
   {% endfor %}
 </ul>
 <form method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
+    <textarea color="black" name="note" id="note" class="form-control"></textarea>
     <br />
     <div align="center">
-        <button type="submit" class="btn btn-primary">add notes </button>
+        <button type="submit" class="btn btn-primary">add notes</button>
     </div>
 </form>
+</div>
 </body>
     {% endblock %}
