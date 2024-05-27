@@ -1,0 +1,208 @@
+{% extends "base.html" %} {% block title %}Minimized home{% endblock %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+body {
+	 margin: 0 auto;
+	 font-family: "Helvetica", sans-serif;
+	 background-color: #f0f0f5;
+	 background: url(https://pbs.twimg.com/media/FB1O4imVQAYsqfB?format=jpg&name=large) no-repeat;
+     background-size: 100% 100%;
+     background-attachment: fixed;
+}
+ h2 {
+     font-family: "Poppins", sans-serif;
+     color: white;
+     font-size: 60px;
+     font-weight: bold;
+     text-shadow: 2px 2px 4px #545454;
+	 text-align: left;
+}
+ .wrapper {
+   margin: 0 auto;
+   width: 854px;
+   height: 480px;
+   overflow: hidden;
+   box-shadow: 0px 4px 25px -4px rgba(0, 0, 0, 1);
+   border-radius: 5px;
+   position: relative; /* Change to relative positioning */
+   top: 50%;
+   transform: translateY(-50%,-50%);
+
+}
+ .wrapper .allImages {
+	 height: 100%;
+	 width: 100%;
+	 transition: all 0.5s ease-in-out;
+}
+ .wrapper .allImages .imageWrapper {
+	 width: 854px;
+	 height: 480px;
+	 float: left;
+	 overflow: hidden;
+}
+ .wrapper .allImages .imageWrapper img {
+	 max-height: 100%;
+	 max-width: 100%;
+}
+ @keyframes ani {
+	 0% {
+		 border-radius: 5%;
+	}
+	 50% {
+		 border-radius: 40%;
+	}
+	 100% {
+		 border-radius: 5%;
+	}
+}
+ .buttons {
+	 position: relative;
+	 z-index: 10;
+	 top: -250px;
+	 display: flex;
+	 width: 100%;
+	 justify-content: space-between;
+}
+ .buttons button {
+	 background: black;
+	 color: white;
+	 padding: 5px 10px;
+	 border: 0;
+	 font-size: 15px;
+	 cursor: pointer;
+	 transition: all 0.4s ease-in-out;
+	 outline: none;
+	 border: 2px solid white;
+	 margin: 0px 15px;
+}
+ .buttons button:first-child {
+	 transform: translateX(-80px);
+}
+ .buttons button:nth-child(2) {
+	 transform: translateX(80px);
+}
+ .wrapper:hover button {
+	 transform: translateX(0px);
+}
+
+    </style>
+</head>
+<body>
+
+  <h2></h2>
+<br>
+<div class="wrapper">
+
+  <!-- making them display in a line-->
+  <div class="allImages">
+
+    <!-- each image wrapper -->
+    <div class="imageWrapper">
+<img src="https://external-preview.redd.it/wxorvdggD890MTj612zscbdHBhbFGeMtEOdTOAjEGQo.jpg?auto=webp&s=dcfcd7f0ef59530eb109e74b612027da12a78abc">
+    </div>
+      <div class="imageWrapper">
+  <img src="https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1497392362017-ZQLZKNBV4YFRP9U8812C/Steven-Lionthemovie_4.jpg?format=1500w">
+    </div>
+      <div class="imageWrapper">
+  <img src="https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1672885711847-XRZ6T9R9W03KOCT88PFB/Art_of_Royal_Space_Force_The_Wings_of_Honne%CC%82amise_103.jpeg">
+    </div>
+      <div class="imageWrapper">
+  <img src="https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1563970978671-80NFXGWZYQBRWMOA4GLP/Art+of+My+Neighbor+Totoro+7+-+18.jpg?format=1000w">
+    </div>
+  </div>
+
+  <div class="buttons">
+  <button> Back </button>
+  <button> Next </button>
+  </div>
+
+
+</div>
+
+
+
+
+<script>
+    window.addEventListener("load",function(){
+document.querySelector(".allImages").style.width = (document.querySelector(".wrapper").clientWidth * document.querySelector(".allImages").children.length) + "px";
+})
+
+var AllImages = document.querySelector(".allImages");
+var imageWidth = document.querySelector(".wrapper").clientWidth;
+var BackBtn = document.querySelectorAll("button")[1];
+var NextBtn = document.querySelectorAll("button")[2];
+// the index value of current page
+var i = 0;
+
+//placeholder for our setInterval function
+var timer = 0;
+
+// start timer function
+function Start() {
+
+ timer = setInterval(function(){
+  if (i < AllImages.children.length) {
+    i++;
+    AllImages.style.transform = "translateX(" +  (-imageWidth * i) + "px)";
+    if (i >= AllImages.children.length) {
+       AllImages.style.transform = "translateX(0px)";
+       i = 0;
+      }
+    }
+  }, 4000);
+}
+
+// starting the timer
+Start();
+
+//stop the timer
+function Stop() {
+clearInterval(timer);
+}
+
+//Back button
+BackBtn.addEventListener("click",function(){
+
+  //restarting the timer each time, so it begins the timer from the current page
+  Stop();
+  Start();
+
+    if (i < AllImages.children.length) {
+  i--;
+    AllImages.style.transform = "translateX(" +  (-imageWidth * i) + "px)";
+  }
+
+     if (0 > i) {
+       i = AllImages.children.length-1;
+       AllImages.style.transform = "translateX("+ (-imageWidth * i) + "px)";
+    }
+})
+
+// Next button
+NextBtn.addEventListener("click",function(){
+
+Stop();
+Start();
+
+  if (i < AllImages.children.length) {
+  i++;
+    AllImages.style.transform = "translateX(" +  (-imageWidth * i) + "px)";
+  }
+
+      if (i >= AllImages.children.length) {
+       AllImages.style.transform = "translateX(0px)";
+       i = 0;
+    }
+})
+</script>
+
+</body>
+</html>
+
+
+
+ {% endblock %}
