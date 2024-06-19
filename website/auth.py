@@ -33,7 +33,7 @@ def joke():
 @auth.route('/contact',)
 def contact():
     return render_template("contact.html", user=current_user)
-@auth.route('/contact', methods=['GET','POST'])
+@auth.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
